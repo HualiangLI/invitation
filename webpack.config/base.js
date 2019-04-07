@@ -6,7 +6,6 @@
 const path = require('path')
 const WebpackHtmlPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const MediaQueryPlugin = require('media-query-plugin')
 
 const resolve = des => path.resolve(__dirname, '../', des)
 
@@ -34,9 +33,12 @@ module.exports = env => {
           test: /\.scss$/,
           include: resolve('./src'),
           exclude: /node_modules/,
-          use: [styleLoader, 'css-loader', MediaQueryPlugin.loader, 'postcss-loader', 'sass-loader']
+          use: [styleLoader, 'css-loader', 'postcss-loader', 'sass-loader']
         }
       ]
+    },
+    resolve: {
+      extensions: [ '.jsx', '.js' ]
     },
     plugins: [
       new WebpackHtmlPlugin({
@@ -45,12 +47,6 @@ module.exports = env => {
       new MiniCssExtractPlugin({
         filename: 'css/[name].[hash].css'
       }),
-      new MediaQueryPlugin({
-        include: true,
-        queries: {
-          'print, screen and (min-width: 75em)': 'desktop'
-        }
-      })
     ]
   }
 }

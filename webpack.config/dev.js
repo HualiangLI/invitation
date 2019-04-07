@@ -15,7 +15,8 @@ module.exports = Merge(
     devServer: {
       hot: true,
       inline: true,
-      stats: 'errors-only'
+      stats: 'errors-only',
+      host: '0.0.0.0'
     }
   }
 )

@@ -1,0 +1,83 @@
+/**
+ * Created by 李华良 on 2019/4/7
+ */
+.comp__dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.3);
+
+  .dialog-content {
+    background: #fff;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    border: 1px solid #333;
+  }
+
+  .header {
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333;
+
+    &::after {
+      content: '';
+      width: 20%;
+      border-bottom: 1px solid #ccc;
+      position: absolute;
+      transform: translateX(-50%);
+      bottom: 0;
+      left: 50%;
+    }
+  }
+
+  .btn-close {
+    display: inline-block;
+    font-style: normal;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .body {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .comp__dialog {
+    .dialog-content {
+      width: 350px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .comp__dialog {
+    .dialog-content {
+      width: 60%;
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  .comp__dialog {
+    .dialog-content {
+      width: 80%;
+    }
+  }
+}
