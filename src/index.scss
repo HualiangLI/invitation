@@ -1,0 +1,9 @@
+/**
+ * Created by 李华良 on 2019/4/6
+ */
+h1 {
+  color: red;
+}
+@media print, screen and (min-width: 75em) {
+  .foo { color: blue }
+}
