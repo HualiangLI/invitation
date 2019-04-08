@@ -26,22 +26,26 @@ class FormContainer extends React.Component {
     else if (email !== confirmEmail) errMsg = 'Email doesn\'t match.'
     if (errMsg) {
       this.setState({ errMsg })
-      return
+      return Promise.resolve()
     }
+    this.requestInvitation({ name, email })
+  }
 
+  requestInvitation(data) {
     this.setState({ loading: true })
-    axios.post(
+    return axios.post(
       'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth',
-      { name, email },
+      data,
       {
         headers: {
           'Content-Type': 'application/json',
         },
       }
     )
-      .then(() => {
-        this.setState({ loading: false }, this.props.onSuccess)
-      })
+      .then(() => new Promise((resolve, reject) => {
+          this.setState({ loading: false }, resolve)
+        }))
+      .then(this.props.onSuccess)
       .catch(err => {
         let errMsg = 'Request failed.'
         if (err.response && err.response.data) errMsg = err.response.data.errorMessage
