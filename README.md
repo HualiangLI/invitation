@@ -7,4 +7,5 @@ A simple page for people request invitation from Broccoli &amp; Co.
 | ---- | ---- |
 | `npm start` | Start app with development env |
 | `npm run dev` | Start app with development env |
-| `npm run build` | Build our app  |
+| `npm run build` | Build app  |
+| `npm run test` | Run test case with jest  |
